@@ -351,7 +351,9 @@ class StreamIO extends AbstractIO
 
             // server has gone away
             if (($this->heartbeat * 2) < $t_read) {
-                $this->reconnect();
+                // $this->reconnect();
+                // simply drop connection
+                $this->close();
             }
 
             // time for client to send a heartbeat
